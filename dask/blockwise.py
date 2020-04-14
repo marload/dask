@@ -455,10 +455,9 @@ def lol_product(head, values):
     """
     if not values:
         return head
-    elif isinstance(values[0], list):
+    if isinstance(values[0], list):
         return [lol_product(head + (x,), values[1:]) for x in values[0]]
-    else:
-        return lol_product(head + (values[0],), values[1:])
+    return lol_product(head + (values[0],), values[1:])
 
 
 def lol_tuples(head, ind, values, dummies):

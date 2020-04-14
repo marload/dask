@@ -346,9 +346,10 @@ class set(object):
         if len(keys) == 1:
             if record:
                 if key in d:
-                    self._record.append(("replace", path, d[key]))
+                    v = ("replace", path, d[key])
                 else:
-                    self._record.append(("insert", path, None))
+                    v = ("insert", path, None)
+                self._record.append(v)
             d[key] = value
         else:
             if key not in d:

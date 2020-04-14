@@ -515,12 +515,11 @@ def expand_environment_variables(config):
     """
     if isinstance(config, Mapping):
         return {k: expand_environment_variables(v) for k, v in config.items()}
-    elif isinstance(config, str):
+    if isinstance(config, str):
         return os.path.expandvars(config)
-    elif isinstance(config, (list, tuple, builtins.set)):
+    if isinstance(config, (list, tuple, builtins.set)):
         return type(config)([expand_environment_variables(v) for v in config])
-    else:
-        return config
+    return config
 
 
 refresh()

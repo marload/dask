@@ -399,10 +399,7 @@ def make_blockwise_graph(func, output, out_indices, *arrind_pairs, **kwargs):
     dsk2 = {}
     if kwargs:
         task, dsk2 = to_task_dask(kwargs)
-        if dsk2:
-            kwargs2 = task
-        else:
-            kwargs2 = kwargs
+        kwargs2 = task if dsk2 else kwargs
 
     dsk = {}
     # Create argument lists

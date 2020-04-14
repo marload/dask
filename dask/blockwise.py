@@ -493,10 +493,9 @@ def lol_tuples(head, ind, values, dummies):
         return head
     if ind[0] not in dummies:
         return lol_tuples(head + (values[ind[0]],), ind[1:], values, dummies)
-    else:
-        return [
-            lol_tuples(head + (v,), ind[1:], values, dummies) for v in dummies[ind[0]]
-        ]
+    return [
+        lol_tuples(head + (v,), ind[1:], values, dummies) for v in dummies[ind[0]]
+    ]
 
 
 def optimize_blockwise(graph, keys=()):
